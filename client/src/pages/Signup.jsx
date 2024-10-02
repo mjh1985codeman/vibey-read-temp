@@ -27,15 +27,15 @@ const Signup = () => {
       body: JSON.stringify(userData),
     };
 
-    fetch("http://localhost:3001/api/Users", options)
+    fetch("/api/Users", options)
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
         if (response.success) {
-        localStorage.setItem ('username', username);
-        
-          const loginData= {
-            username, 
+          localStorage.setItem('username', username);
+
+          const loginData = {
+            username,
             password,
           };
           const loginOptions = {
@@ -43,7 +43,7 @@ const Signup = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(loginData),
           };
-          fetch("http://localhost:3001/auth/login", loginOptions)
+          fetch("api/auth/login", loginOptions)
             .then((loginResponse) => loginResponse.json())
             .then((loginResponse) => {
               console.log(loginResponse);
@@ -53,7 +53,7 @@ const Signup = () => {
               }
             })
             .catch((err) => console.error('Login error:', err));
-          }
+        }
       })
       .catch((err) => console.error('Login error:', err));
   };

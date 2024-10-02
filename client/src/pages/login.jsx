@@ -1,7 +1,7 @@
 // todo: login logic
 // todo: sign-up logic
 // what needs to populate here: logo, 1 form for login with a login button, the login button will take you to th homepage, a sign-up botton will start the process of a sign-up form either in popup or another page. on finish sign-up they will go back to log-in
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -31,7 +31,7 @@ const Login = () => {
       body: JSON.stringify(userData),
     };
 
-    fetch("http://localhost:3001/auth/login", options)
+    fetch("/auth/login", options)
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -48,8 +48,8 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-       <img src={logo} alt="Vibey Reads Logo" className="logo" style={{ width: '750px', height: 'auto', marginBottom: '50px' }}/>
-<br></br>
+        <img src={logo} alt="Vibey Reads Logo" className="logo" style={{ width: '750px', height: 'auto', marginBottom: '50px' }} />
+        <br></br>
         <Form.Label>Username</Form.Label>
         <Form.Control
           type="text"

@@ -1,4 +1,4 @@
-import { User } from "../models/user.js";
+import {Viber} from '../models/index.js';
 // GET /Users
 export const getAllUsers = async (_req, res) => {
   try {
@@ -28,11 +28,9 @@ export const getUserById = async (req, res) => {
 };
 // POST /Users
 export const createUser = async (req, res) => {
-  const { username, email, password } = req.body;
-  console.log(req.body, "req body");
-  console.log(username, email, password, "req body");
   try {
-    const newUser = await User.create({ username, email, password });
+    const newUser = await Viber.create(req.body);
+    console.log("are we getting a user here??. . ." , newUser);
     res.status(201).json(newUser);
   } catch (error) {
     res.status(400).json({ message: error.message });
